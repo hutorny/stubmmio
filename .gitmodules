@@ -1,0 +1,3 @@
+[submodule "ext/logovod"]
+	path = ext/logovod
+	url = git@github.com:hutorny/logovod.git

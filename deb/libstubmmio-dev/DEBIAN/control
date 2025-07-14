@@ -1,0 +1,7 @@
+Package: libstubmmio-dev
+Version: 1.0
+Maintainer: Eugene Hutorny <eugene@hutorny.in.ua>
+Architecture: amd64
+Description: MMIO stub library for off-targeting embedded unit tests
+Homepage: https://hutorny.in.ua/projects/stubmmio
+Vcs-Git: https://github.com/hutorny/stubmmio.git

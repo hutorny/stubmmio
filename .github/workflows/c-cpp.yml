@@ -1,0 +1,28 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ "master", "feature/**", "fix/**" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  linux:
+    runs-on: ubuntu-24.04
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        submodules: true
+    - name: Build library with GCC
+      run:  make -C src CXX=g++ -j$(nproc) package
+    - name: Install library 
+      run:  make -C src DESTDIR=/tmp/test install
+    - name: Build unit tests with GCC
+      run:  make -C test CXX=g++ -j$(nproc) build
+    - name: Run unit tests
+      run:  make -C test run
+    - name: Build unit tests with clang
+      run:  make -C test CXX=clang++ -j$(nproc) build
+    - name: Run unit tests
+      run:  make -C test CXX=clang++ run
+
