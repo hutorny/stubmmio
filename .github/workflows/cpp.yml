@@ -13,6 +13,8 @@ jobs:
     - uses: actions/checkout@v4
       with:
         submodules: true
+    - name: Enable vm.mmap_min_addr=0
+      run:  sudo sysctl -w vm.mmap_min_addr="0"
     - name: Build library with GCC
       run:  make -C src CXX=g++ -j$(nproc) package
     - name: Install library 
